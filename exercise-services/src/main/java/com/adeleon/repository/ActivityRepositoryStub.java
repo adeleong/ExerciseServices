@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.adeleon.model.Activity;
+import com.adeleon.model.User;
 
 public class ActivityRepositoryStub implements ActivityRepository {
 
@@ -37,7 +38,18 @@ public class ActivityRepositoryStub implements ActivityRepository {
 		activity1.setDescription("Swimming");
 		activity1.setDuration(55);
 		
+		User user = new User();
+		user.setId("5678");
+		user.setName("Aderso");
+		activity1.setUser(user);
+		
 		return activity1;
+	}
+
+	@Override
+	public void create(Activity activity) {
+		// insert statement for the db
+		
 	}
 	
 	
