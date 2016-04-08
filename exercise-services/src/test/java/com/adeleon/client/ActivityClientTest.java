@@ -6,6 +6,8 @@ import org.junit.Test;
 
 import com.adeleon.model.Activity;
 
+import java.util.List;
+
 public class ActivityClientTest {
 
 	@Test
@@ -15,6 +17,27 @@ public class ActivityClientTest {
 		Activity activity = client.get("1234");
 		System.out.println(activity);
 		assertNotNull(activity);
+	}
+	
+	@Test
+	public void testGetList(){
+		ActivityClient client = new ActivityClient();
+		
+		List<Activity> activities = client.get();
+		System.out.println(activities);
+		assertNotNull(activities);
+	}
+	
+	@Test(expected=RuntimeException.class)
+	public void testGetWithBadRequest(){
+		ActivityClient client = new ActivityClient();
+		client.get("123");
+	}
+	
+	@Test(expected=RuntimeException.class)
+	public void testGetWithNotFound(){
+		ActivityClient client = new ActivityClient();
+		client.get("7777");
 	}
 
 }
